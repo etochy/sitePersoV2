@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,11 @@ import { PageArticlesComponent } from './blog/articles/page-articles/page-articl
 import { PageArticleDetailComponent } from './blog/articles/page-article-detail/page-article-detail.component';
 import { LoginComponent } from './login/login.component';
 import { PageCreationComponent } from './blog/page-creation/page-creation.component';
+import { HttpIntercepteur } from './http-intercepteur';
+import { HttpClientModule } from '@angular/common/http'; 
+
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,12 +31,19 @@ import { PageCreationComponent } from './blog/page-creation/page-creation.compon
     PageArticleDetailComponent,
     LoginComponent,
     PageCreationComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpIntercepteur,
+    multi: true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

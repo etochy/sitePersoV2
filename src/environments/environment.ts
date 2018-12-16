@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlServer: ''
+  urlServer: 'https://blog-voyage.herokuapp.com',
 };
 
 /*
