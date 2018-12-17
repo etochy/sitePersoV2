@@ -1,7 +1,8 @@
 export class Actualite {
-    id: number;
-    date: Date;
-    title: string;
-    description: string;
-    image: string;
+    id: number = null;
+    akArticle: string;
+    date: Date = null;
+    title: string = null;
+    description: string = null;
+    image: string = null;
 }

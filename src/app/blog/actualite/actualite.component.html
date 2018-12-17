@@ -1,3 +1,9 @@
 <p>
   actualite works!
 </p>
+<div *ngFor="let actu of _filActu">
+  <p>ak : {{actu.akArticle}}</p>
+  <p>desc : {{actu.description}}</p>
+</div>
+
+<button (click)="creerArticle()"></button>

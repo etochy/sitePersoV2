@@ -64,24 +64,14 @@ export class ServicesService {
       password: password
     }
 
-    let resp = this.http.post( this.url + '/login', body)
+    return this.http.post( this.url + '/login', body)
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
     );
-
-    return resp;
-    /* TODO A DEPLACER
-    resp.subscribe((data: any) => function() {
-      sessionStorage.setItem('authorization', data['token']);
-      sessionStorage.setItem('user', data['user']);
-      sessionStorage.setItem('expire', data['expires']);
-    });
-    */
-
   }
 
-  private handleError(error: HttpErrorResponse) {
+  private handleError(error: HttpErrorResponse) {    
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
