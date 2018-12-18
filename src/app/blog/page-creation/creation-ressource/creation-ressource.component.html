@@ -1,28 +1,51 @@
-<div class="div_formulaire_creation">
-  <p>Création de Ressource</p>
-  <form class="" (ngSubmit)="onSubmitRessource()" #resForm="ngForm">
-    <div class="input_creation_g">
-      <label class="input_nom" for="akRessource">AkRessource</label>
-      <input class="input_creation" type="text" id="akRessource" [(ngModel)]="ressourceCreation.akRessource" name="akRessource" required>
+<div class="div_formulaire">
+  <div class="div_formulaire_creation">
+    <h2>Création de Ressource</h2>
+    <form class="" (ngSubmit)="onSubmitRessource()" #resForm="ngForm">
+      <div class="input_creation_g">
+        <label class="input_nom" for="akRessource">ak: </label>
+        <input class="input_creation" type="text" id="akRessource" [(ngModel)]="ressourceCreation.akRessource" name="akRessource" required>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="ressource">fr: </label>
+        <input class="input_creation" type="text" id="ressource" [(ngModel)]="ressourceCreation.ressource" name="ressource" required>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="ressource_eng">en: </label>
+        <input class="input_creation" type="text" id="ressource_eng" [(ngModel)]="ressourceCreation.ressource_eng" name="ressource_eng">
+      </div>
+      <div class="submit">
+        <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Submit</button>
+        <div class="chargement" [hidden]="!chargement"></div>
+      </div>
+    </form>
+  </div>
+  <div class="div_formulaire_creation">
+    <h2>Modif de res</h2>
+    <div *ngFor="let res of ressourcesExistantes" class="div_formulaire_modification" [ngClass]="{'active': res.isActive}" (click)="toggle(res)">
+      <form class="" (ngSubmit)="onModifRessource(res)" #resForm="ngForm">
+        <div class="input_creation_g">
+          <label class="input_nom" for="akRessource">{{res.akRessource}}</label>
+        </div>
+        <div class="input_creation_g">
+            <label class="input_nom" for="ressource">Fr :</label>
+          <input class="input_creation" type="text" id="ressource" [(ngModel)]="res.ressource" name="ressource" required>
+        </div>
+        <div class="input_creation_g">
+          <label class="input_nom" for="ressource_eng">En :</label>
+          <input class="input_creation" type="text" id="ressource_eng" [(ngModel)]="res.ressource_eng" name="ressource_eng">
+        </div>
+        <div class="submit">
+          <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Submit</button>
+          <div class="chargement" [hidden]="!chargement"></div>
+        </div>
+      </form>
     </div>
-    <div class="input_creation_g">
-      <label class="input_nom" for="ressource">Ressource</label>
-      <input class="input_creation" type="text" id="ressource" [(ngModel)]="ressourceCreation.ressource" name="ressource" required>
-    </div>
-    <div class="input_creation_g">
-      <label class="input_nom" for="ressource_eng">Ressource_eng</label>
-      <input class="input_creation" type="text" id="ressource_eng" [(ngModel)]="ressourceCreation.ressource_eng" name="ressource_eng">
-    </div>
-    <div class="submit">
-      <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Submit</button>
-      <div class="chargement" [hidden]="!chargement"></div>
-    </div>
-  </form>
+  </div>
   <div class="envoi_ok" [hidden]="!creationOk">
     <p>Ressource créé</p>
   </div>
   <div class="envoi_fail" [hidden]="!creationProbleme">
     <p>Un probleme est survenue : {{error}}</p>
   </div>
-
 </div>

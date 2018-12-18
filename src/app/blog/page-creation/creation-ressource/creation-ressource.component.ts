@@ -15,11 +15,18 @@ export class CreationRessourceComponent implements OnInit {
   creationProbleme: boolean = false;
   error: string = '';
 
+  ressourcesExistantes: Ressource[] = [];
+
   constructor(
     private service: ServicesService,
   ) { }
 
   ngOnInit() {
+    this.service.getRessources().subscribe((data: Ressource[])=> {
+      data.forEach(element => {
+        this.ressourcesExistantes.push(element);
+      });
+    });
   }
 
   onSubmitRessource() {
@@ -43,6 +50,28 @@ export class CreationRessourceComponent implements OnInit {
     );
   }
 
+  onModifRessource(res: Ressource){
+    this.razBool();
+    this.chargement = true;
+    console.log(res);
+    
+    this.service.updateRessource(res).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.chargement = false;
+        this.creationOk = true;
+      },
+      error => {
+        this.chargement = false;
+        this.creationProbleme = true;
+        console.log(error.error);
+        this.error = error.error;
+      }
+    );
+  }
+  toggle(res: any) {
+    res.isActive = true;
+  }
   razBool() {
     this.chargement = false;
     this.creationOk = false;
