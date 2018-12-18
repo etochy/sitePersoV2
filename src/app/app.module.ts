@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CreationRessourceComponent } from './blog/page-creation/creation-ressource/creation-ressource.component';
 import { CreationPostComponent } from './blog/page-creation/creation-post/creation-post.component';
+import { CreationArticleComponent } from './blog/page-creation/creation-article/creation-article.component';
+import { CreationPositionComponent } from './blog/page-creation/creation-position/creation-position.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { CreationPostComponent } from './blog/page-creation/creation-post/creati
     LoginComponent,
     PageCreationComponent,
     CreationRessourceComponent,
-    CreationPostComponent
+    CreationPostComponent,
+    CreationArticleComponent,
+    CreationPositionComponent
     
   ],
   imports: [

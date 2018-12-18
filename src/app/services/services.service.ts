@@ -5,6 +5,7 @@ import { Actualite } from '../blog/classes/actualite';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Ressource } from '../blog/classes/ressource';
+import { Article } from '../blog/classes/article';
 
 
 @Injectable({
@@ -66,6 +67,22 @@ export class ServicesService {
 
   creerPost(post: Actualite){
     return this.http.post(this.url + '/articles', post)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  creerArticle(post: Article){
+    return this.http.post(this.url + '/blog', post)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  majPosition(user: any){
+    return this.http.put(this.url + "/utilisateurs/update-position/" + user.idUtil, user)
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error

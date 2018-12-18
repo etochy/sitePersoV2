@@ -1,0 +1,41 @@
+<div class="div_formulaire">
+  <div class="div_formulaire_creation article">
+    <h2>Création d'article</h2>
+    <form class="" (ngSubmit)="onSubmitActu()" #resForm="ngForm">
+      <div class="input_creation_g">
+        <label class="input_nom" for="title">Titre: </label>
+        <input class="input_creation" type="text" id="title" [(ngModel)]="actuCreation.title" name="title" required>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="title_eng">Title_eng: </label>
+        <input class="input_creation" type="text" id="title_eng" [(ngModel)]="actuCreation.title_eng" name="title_eng">
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="contenu">Contenu: </label>
+        <textarea class="input_creation" type="text" id="contenu" [(ngModel)]="actuCreation.contenu" name="contenu"required></textarea>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="contenu_eng">Contenu_en: </label>
+        <textarea class="input_creation" type="text" id="contenu_eng" [(ngModel)]="actuCreation.contenu_eng" name="contenu_eng"></textarea>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="date">date: </label>
+        <input class="input_creation" type="date" id="date" [(ngModel)]="actuCreation.date" name="date"required>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="image">Image: </label>
+        <input class="input_creation" type="text" id="image" [(ngModel)]="actuCreation.image" name="image"required>
+      </div>
+      <div class="submit">
+        <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Submit</button>
+        <div class="chargement" [hidden]="!chargement"></div>
+      </div>
+    </form>
+  </div>
+  <div class="envoi_ok" [hidden]="!creationOk">
+    <p>Ressource créé</p>
+  </div>
+  <div class="envoi_fail" [hidden]="!creationProbleme">
+    <p>Un probleme est survenue : {{error}}</p>
+  </div>
+</div>

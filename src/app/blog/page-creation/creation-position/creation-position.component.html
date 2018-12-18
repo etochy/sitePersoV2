@@ -1,0 +1,25 @@
+<div class="div_formulaire">
+  <div class="div_formulaire_creation">
+    <h2>Mise à jour position</h2>
+    <form class="" (ngSubmit)="onSubmitRessource()" #resForm="ngForm">
+      <div class="input_creation_g">
+        <label class="input_nom" for="pays">Pays: </label>
+        <input class="input_creation" type="text" id="pays" [(ngModel)]="pays" name="pays" required>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="ville">Ville: </label>
+        <input class="input_creation" type="text" id="ville" [(ngModel)]="ville" name="ville" required>
+      </div>
+      <div class="submit">
+        <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Submit</button>
+        <div class="chargement" [hidden]="!chargement"></div>
+      </div>
+    </form>
+  </div>
+  <div class="envoi_ok" [hidden]="!creationOk">
+    <p>MAJ effectuée</p>
+  </div>
+  <div class="envoi_fail" [hidden]="!creationProbleme">
+    <p>Un probleme est survenue : {{error}}</p>
+  </div>
+</div>
