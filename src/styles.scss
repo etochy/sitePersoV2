@@ -108,7 +108,6 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding-right: 5px;
     border-radius: 5px;
     margin-top: 10px;
-    animation: hidenotif .5s linear 5s;
 }
 .envoi_fail{
     height: 5em;
@@ -119,14 +118,4 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 5px;
     padding-right: 5px;
     margin-top: 10px;
-    animation: hidenotif 0s linear 5s;
-}
-
-@keyframes hidenotif {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
 }
