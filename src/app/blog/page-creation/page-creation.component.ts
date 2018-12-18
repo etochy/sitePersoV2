@@ -11,5 +11,4 @@ export class PageCreationComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
