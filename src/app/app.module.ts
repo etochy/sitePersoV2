@@ -17,6 +17,8 @@ import { HttpIntercepteur } from './http-intercepteur';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { FormsModule } from '@angular/forms';
+import { CreationRessourceComponent } from './blog/page-creation/creation-ressource/creation-ressource.component';
+import { CreationPostComponent } from './blog/page-creation/creation-post/creation-post.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { FormsModule } from '@angular/forms';
     PageArticlesComponent,
     PageArticleDetailComponent,
     LoginComponent,
-    PageCreationComponent
+    PageCreationComponent,
+    CreationRessourceComponent,
+    CreationPostComponent
     
   ],
   imports: [

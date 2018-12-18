@@ -6,6 +6,7 @@ import { PageAccueilBlogComponent } from './blog/page-accueil-blog/page-accueil-
 import { PageAccueilProComponent } from './pro/page-accueil-pro/page-accueil-pro.component';
 import { PageArticlesComponent } from './blog/articles/page-articles/page-articles.component';
 import { PageArticleDetailComponent } from './blog/articles/page-article-detail/page-article-detail.component';
+import { PageCreationComponent } from './blog/page-creation/page-creation.component';
 
 const routes: Routes = [
   { path: '', component: PageAccueilComponent },
@@ -16,8 +17,8 @@ const routes: Routes = [
 
   { path: 'pro', component: PageAccueilProComponent },
 
-  // { path: 'login', component: LoginComponent }
-  
+  { path: 'creation', component: PageCreationComponent },
+    
 ];
 
 @NgModule({

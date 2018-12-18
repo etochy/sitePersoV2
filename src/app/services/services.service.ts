@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { Actualite } from '../blog/classes/actualite';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Ressource } from '../blog/classes/ressource';
 
 
 @Injectable({
@@ -17,14 +18,27 @@ export class ServicesService {
     private http: HttpClient,
   ) {}
 
-  imageHeaderAccueil() {
-    return ;
+  creerRessource(post: Ressource){
+    return this.http.post(this.url + '/ressources', post)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
-  imageHeaderPro(){
-    return ;
+  updateRessource(post: Ressource){
+    return this.http.put(this.url + '/ressources/' + post.akRessource , post)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
-  imageHeaderBlog() {
-    return ;
+
+  getRessources(){
+    return this.http.get(this.url + '/ressources')
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
   }
 
   getPosts(skip: number, limit: number) {
@@ -83,6 +97,6 @@ export class ServicesService {
         `body was: ${error.error}`);
     }
     // return an observable with a user-facing error message
-    return throwError('Something bad happened; please try again later.');
+    return throwError(error);
   };
 }

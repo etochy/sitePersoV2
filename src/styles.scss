@@ -1,1 +1,118 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face { font-family: Typewriter; src: url('./assets/fonts/typeWriter/TravelingTypewriter.ttf'); } ;
+@font-face { font-family: Flight; src: url('./assets/fonts/Another_Flight.otf');}
+@font-face { font-family: Code; src: url('./assets/fonts/code/CODE_Light.otf');}
+@font-face { font-family: Code; font-weight: bold; src: url('./assets/fonts/code/CODE_Bold.otf');}
+
+body{
+    font-family: Typewriter;
+}
+
+$boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.div_formulaire{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.div_formulaire_creation {
+    height: 100%;
+    width: 20em;
+    padding: 10px;
+    box-shadow: $boxShadow;
+    margin: 5px;
+    & .input_creation_g {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 5px;
+        & .input_nom {
+            flex: 1;
+        }
+        & .input_creation {
+            flex: 2;
+            border: 1px solid #aeaeae;
+            border-radius: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        & .input_creation.ng-invalid {
+            border-right: 10px solid rgb(196, 13, 13);
+        }
+        & .input_creation.ng-valid {
+            border-right: 10px solid rgb(10, 124, 0);
+        }
+    }
+}
+
+.div_formulaire_modification {
+    width: 100%;
+    height: 1.5em;
+    overflow: hidden;
+    box-shadow: $boxShadow;
+}
+.div_formulaire_modification.active {
+    height: 100%;
+}
+
+.bouton_submit {
+    border: 1px solid #4395e4;
+    border-radius: 5px;
+    height: 2em;
+    width: 10em;
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+.bouton_submit:disabled {
+    border: 1px solid rgb(252, 103, 103);
+    background-color: #f0dddd;
+    cursor: not-allowed;
+}
+
+.submit {
+    display: flex;
+    flex-flow: row;
+    align-content: flex-start;
+}
+
+.chargement {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 20px;
+    width: 20px;
+    background: url('./assets/loading.svg');
+    background-size: 20px;
+    -webkit-animation: rotation .5s linear infinite; /* Safari 4.0 - 8.0 */
+    animation: rotation .5s linear infinite;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.envoi_ok{
+    height: 5em;
+    width: 100%;
+    background-color: rgb(191, 255, 191);
+    border: 1px solid rgb(7, 97, 7);
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.envoi_fail{
+    height: 5em;
+    width: 100%;
+    background-color: rgb(255, 154, 154);
+    border: 1px solid rgb(151, 0, 0);
+    padding-left: 5px;
+    border-radius: 5px;
+    padding-right: 5px;
+    margin-top: 10px;
+}
