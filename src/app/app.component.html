@@ -1,3 +1,22 @@
-<app-login></app-login>
+<!-- <header class="header">
+    <img src="{{imageHeader}}" alt="" class="imageHeader">
+</header> -->
+<div class="menu">
+    <p class="titre" routerLink=''>
+        Launay-Esteban.fr
+    </p>
+    <app-login></app-login>
+</div>
+<div class="contenu">
+    <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>
+<footer class="footer">
+    <p>
+        <strong>launay-esteban.fr</strong> by <a href="https://github.com/etochy">Esteban Launay</a>.
+        This website works with <a href="https://angular.io">Angular 7</a>.
+        <br>
+        The website content is licensed <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>.CC BY-NC 4.0
+        <br>
+    </p>
+</footer>

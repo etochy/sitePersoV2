@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesService } from '../services/services.service';
 
 @Component({
   selector: 'app-page-accueil',
@@ -6,13 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page-accueil.component.scss']
 })
 export class PageAccueilComponent implements OnInit {
+  
   title = 'pageAccueil';
+  imgAccueil = this.service.imageAccueil;
+  image: string;
+  constructor(
+    private service: ServicesService,
+  ) {}
 
-  constructor() {
-    
+  ngOnInit(): void {
+    this.service.abonnement(this);
   }
 
-  ngOnInit() {
+  notif(){
+    this.imgAccueil = this.service.imageAccueil;
   }
 
 }

@@ -6,6 +6,7 @@ import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Ressource } from '../blog/classes/ressource';
 import { Article } from '../blog/classes/article';
+import { componentFactoryName } from '@angular/compiler';
 
 
 @Injectable({
@@ -14,11 +15,39 @@ import { Article } from '../blog/classes/article';
 export class ServicesService {
 
   private url = environment.urlServer;
+  ressources: Ressource[] = [];
+  public imageHeader: string = '';
+  public imageAccueil: string = '';
+
+  components: any[] = [];
 
   constructor(
     private http: HttpClient,
-  ) {}
+  ) {
+    this.init();
+  }
 
+  init() {
+    this.getRessources().subscribe((data: Ressource[]) => {
+      data.forEach(element => {
+        this.ressources.push(element);
+      });
+      
+      //VAR
+      this.ressources.forEach(element => {
+        if (element.akRessource === 'imageHeader') {
+          this.imageHeader = element.ressource;
+        }
+        if (element.akRessource === 'imageAccueil') {
+          this.imageAccueil = element.ressource;
+        }
+      });      
+      this.components.forEach(e => {
+        e.notif();
+      });
+    });
+  }
+  
   creerRessource(post: Ressource){
     return this.http.post(this.url + '/ressources', post)
     .pipe(
@@ -33,7 +62,6 @@ export class ServicesService {
       catchError(this.handleError) // then handle the error
     );
   }
-
   getRessources(){
     return this.http.get(this.url + '/ressources')
     .pipe(
@@ -116,4 +144,9 @@ export class ServicesService {
     // return an observable with a user-facing error message
     return throwError(error);
   };
+
+  
+  abonnement(comp) {
+    this.components.push(comp);
+  }
 }

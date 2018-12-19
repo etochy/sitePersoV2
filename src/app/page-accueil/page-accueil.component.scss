@@ -1,0 +1,33 @@
+.contenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    & .boutons {
+        display: flex;
+        flex-flow: row wrap;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    & .image {
+        align-self: center;
+        // background-color: rgb(114, 3, 3);
+        height: 20rem;
+        width: 20rem;
+        @media (max-width: 500px) {
+            height: 10rem;
+            width: 10rem;
+        }
+        margin: 3rem;
+        overflow: hidden;
+        border-radius: 50%;
+        & img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

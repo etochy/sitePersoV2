@@ -1,0 +1,42 @@
+$boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.formLogin {
+    position: absolute;
+    right: 5px;
+    top: 4rem;
+    width: 10rem;
+    height: 0rem;
+    overflow: hidden;
+    transition: .2s height;
+    background-color: white;
+    box-shadow: $boxShadow;
+
+    &.active {
+        height: 10rem;
+    }
+    &.error {
+        border-bottom: 5px solid red;
+    }
+    & .inputLog {
+        width: 100%;
+        height: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        box-shadow: $boxShadow;
+    }
+    & .bouton_submit {
+        width: 100%;
+        height: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+        border: none;
+        box-shadow: $boxShadow;
+    }
+}
+
+.boutonLogin {
+    padding-right: 1rem;
+    &:hover {
+        cursor: pointer;
+    }
+}

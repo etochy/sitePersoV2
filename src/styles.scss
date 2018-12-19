@@ -4,11 +4,21 @@
 @font-face { font-family: Code; src: url('./assets/fonts/code/CODE_Light.otf');}
 @font-face { font-family: Code; font-weight: bold; src: url('./assets/fonts/code/CODE_Bold.otf');}
 
+$boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 body{
-    font-family: Typewriter;
+    font-family: Flight;
+    font-size: 1.5em;
+}
+.class_mere {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
 }
 
-$boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// FORMULAIRES
 .div_formulaire{
     width: 100%;
     height: auto;
@@ -18,7 +28,7 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .div_formulaire_creation{
     height: 100%;
-    width: 20em;
+    width: 20rem;
     padding: 10px;
     box-shadow: $boxShadow;
     margin: 5px;
@@ -45,13 +55,13 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
     }
     &.article{
-        width: 40em;
+        width: 40rem;
     }
 }
 
 .div_formulaire_modification {
     width: 100%;
-    height: 1.5em;
+    height: 1.5rem;
     overflow: hidden;
     box-shadow: $boxShadow;
 }
@@ -59,11 +69,12 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     height: 100%;
 }
 
+// BOUTONS
 .bouton_submit {
     border: 1px solid #4395e4;
     border-radius: 5px;
-    height: 2em;
-    width: 10em;
+    height: 2rem;
+    width: 10rem;
     background-color: #f7f7f7;
     cursor: pointer;
 }
@@ -72,13 +83,13 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: #f0dddd;
     cursor: not-allowed;
 }
-
 .submit {
     display: flex;
     flex-flow: row;
     align-content: flex-start;
 }
 
+// CHARGEMENT
 .chargement {
     margin-left: 10px;
     margin-right: 10px;
@@ -89,7 +100,6 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-animation: rotation .5s linear infinite; /* Safari 4.0 - 8.0 */
     animation: rotation .5s linear infinite;
 }
-
 @keyframes rotation {
     from {
         transform: rotate(0deg);
@@ -99,8 +109,9 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 }
 
+// CONFIRMATIONS & ERREUR
 .envoi_ok{
-    height: 5em;
+    height: 5rem;
     width: 100%;
     background-color: rgb(191, 255, 191);
     border: 1px solid rgb(7, 97, 7);
@@ -110,7 +121,7 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-top: 10px;
 }
 .envoi_fail{
-    height: 5em;
+    height: 5rem;
     width: 100%;
     background-color: rgb(255, 154, 154);
     border: 1px solid rgb(151, 0, 0);

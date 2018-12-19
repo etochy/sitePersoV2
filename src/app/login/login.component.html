@@ -1,5 +1,24 @@
-<div>
-  <input type="text" [(ngModel)]='_username'>
-  <input type="password" [(ngModel)]='_password'>
-  <button (click)="login()">Login</button>
+<div (click)="deployerLogin()" class="boutonLogin">
+  <ng-container *ngIf="!valid; else elseTemplate">
+    LOGIN
+  </ng-container>
+  <ng-template #elseTemplate>
+    DECONNEXION
+  </ng-template>
+  
 </div>
+
+<form class="formLogin" [ngClass]="{'active': deployer, 'error': error}" (ngSubmit)="login()" #resForm="ngForm">
+  <div class="">
+    <input class="inputLog" placeholder="Login" type="text" id="akRessource" [(ngModel)]="_username" name="_username" required>
+  </div>
+  <div class="">
+    <input class="inputLog" placeholder="Password" type="password" id="ressource" [(ngModel)]="_password" name="_password" required>
+  </div>
+  <div class="">
+    <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Login</button>
+  </div>
+  <div class="chargement" [hidden]="!chargement"></div>
+</form>
+
+

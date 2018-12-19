@@ -21,6 +21,7 @@ import { CreationRessourceComponent } from './blog/page-creation/creation-ressou
 import { CreationPostComponent } from './blog/page-creation/creation-post/creation-post.component';
 import { CreationArticleComponent } from './blog/page-creation/creation-article/creation-article.component';
 import { CreationPositionComponent } from './blog/page-creation/creation-position/creation-position.component';
+import { ServicesService } from './services/services.service';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { CreationPositionComponent } from './blog/page-creation/creation-positio
     provide: HTTP_INTERCEPTORS,
     useClass: HttpIntercepteur,
     multi: true,
-  }],
+  }, ServicesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,10 +14,10 @@ const routes: Routes = [
   { path: 'blog/actualite', component: ActualiteComponent },
   { path: 'blog/articles', component: PageArticlesComponent },
   { path: 'blog/articles/:id', component: PageArticleDetailComponent },
+  { path: 'blog/creation', component: PageCreationComponent },
 
   { path: 'pro', component: PageAccueilProComponent },
 
-  { path: 'creation', component: PageCreationComponent },
     
 ];
 
