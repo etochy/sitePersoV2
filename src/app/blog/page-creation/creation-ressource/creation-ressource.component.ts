@@ -21,6 +21,9 @@ export class CreationRessourceComponent implements OnInit {
     private service: ServicesService,
   ) { }
 
+  /**
+   * Initialisation des ressources
+   */
   ngOnInit() {
     this.service.getRessources().subscribe((data: Ressource[])=> {
       data.forEach(element => {
@@ -29,6 +32,9 @@ export class CreationRessourceComponent implements OnInit {
     });
   }
 
+  /**
+   * Creation de ressource
+   */
   onSubmitRessource() {
     if (this.ressourceCreation.ressource_eng === undefined || this.ressourceCreation.ressource_eng === '') {
       this.ressourceCreation.ressource_eng = this.ressourceCreation.ressource;
@@ -50,6 +56,10 @@ export class CreationRessourceComponent implements OnInit {
     );
   }
 
+  /**
+   * Modifie une ressource
+   * @param res La ressource a modifier
+   */
   onModifRessource(res: Ressource){
     this.razBool();
     this.chargement = true;
@@ -69,9 +79,18 @@ export class CreationRessourceComponent implements OnInit {
       }
     );
   }
+
+  /**
+   * Permet d'ouvrir une ressource a la modification
+   * @param res la ressource
+   */
   toggle(res: any) {
     res.isActive = true;
   }
+
+  /**
+   * Remise a zero des indicateurs
+   */
   razBool() {
     this.chargement = false;
     this.creationOk = false;

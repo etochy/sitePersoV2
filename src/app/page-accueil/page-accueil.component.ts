@@ -16,9 +16,13 @@ export class PageAccueilComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // S'abonne au service
     this.service.abonnement(this);
   }
 
+  /**
+   * permet de recuperer les ressources
+   */
   notif(){
     this.imgAccueil = this.service.imageAccueil;
   }

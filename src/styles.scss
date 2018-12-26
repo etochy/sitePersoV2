@@ -9,6 +9,17 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 body{
     font-family: Flight;
     font-size: 1.5em;
+    @media(max-width: 700px) {
+        font-size: 1em;
+    }
+}
+
+.blog{
+    font-family: Typewriter;
+    font-size: 1rem;
+    @media(max-width: 700px) {
+        font-size: .8rem;
+    }
 }
 .class_mere {
     position: absolute;
@@ -111,7 +122,7 @@ body{
 
 // CONFIRMATIONS & ERREUR
 .envoi_ok{
-    height: 5rem;
+    height: auto;
     width: 100%;
     background-color: rgb(191, 255, 191);
     border: 1px solid rgb(7, 97, 7);
@@ -121,7 +132,7 @@ body{
     margin-top: 10px;
 }
 .envoi_fail{
-    height: 5rem;
+    // height: 5rem;
     width: 100%;
     background-color: rgb(255, 154, 154);
     border: 1px solid rgb(151, 0, 0);
@@ -129,4 +140,30 @@ body{
     border-radius: 5px;
     padding-right: 5px;
     margin-top: 10px;
+}
+
+.lien {
+    display: flex;
+    flex-direction: row;
+    & .iconGit {
+        margin-right: 5px;
+        height: 1em;
+        width: 1em;
+        background: url('./assets/icons/github.svg');
+        background-size: 1em;
+    }
+    & .iconLinkedin{
+        margin-right: 5px;
+        height: 1em;
+        width: 1em;
+        background: url('./assets/icons/linkedin.svg');
+        background-size: 1em;
+    }
+    & .iconMalt {
+        margin-right: 5px;
+        height: 1em;
+        width: 20px;
+        background: url('./assets/icons/instagram.svg');
+        background-size: 1em;
+    }
 }

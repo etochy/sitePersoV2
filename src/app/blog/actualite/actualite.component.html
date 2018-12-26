@@ -1,9 +1,8 @@
-<p>
-  actualite works!
-</p>
+
 <div *ngFor="let actu of _filActu">
-  <p>ak : {{actu.akArticle}}</p>
-  <p>desc : {{actu.description}}</p>
+  <app-carte-post [post]='actu'></app-carte-post>
 </div>
 
-<button (click)="creerArticle()"></button>
+<div (click)="chargerPlus()" class="actu_btn">
+  Charger Plus
+</div>

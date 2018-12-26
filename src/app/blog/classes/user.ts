@@ -8,9 +8,6 @@ export class User {
     bio: string;
     image: string;
     pays: string;
-    position: {
-        lat: number;
-        long: number;
-    }
+    position: string;
     ville: string;
 }

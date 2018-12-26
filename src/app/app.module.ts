@@ -22,6 +22,9 @@ import { CreationPostComponent } from './blog/page-creation/creation-post/creati
 import { CreationArticleComponent } from './blog/page-creation/creation-article/creation-article.component';
 import { CreationPositionComponent } from './blog/page-creation/creation-position/creation-position.component';
 import { ServicesService } from './services/services.service';
+import { CartePostComponent } from './components/carte-post/carte-post.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UnderConstructComponent } from './under-construct/under-construct.component';
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import { ServicesService } from './services/services.service';
     CreationRessourceComponent,
     CreationPostComponent,
     CreationArticleComponent,
-    CreationPositionComponent
+    CreationPositionComponent,
+    CartePostComponent,
+    NotFoundComponent,
+    UnderConstructComponent
     
   ],
   imports: [

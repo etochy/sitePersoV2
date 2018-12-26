@@ -21,6 +21,10 @@ export class CreationPositionComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  /**
+   * mise a jour de la position lors du clique sur submit
+   */
   onSubmitRessource() {
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((pos) => {
@@ -51,6 +55,9 @@ export class CreationPositionComponent implements OnInit {
     }    
     
   }
+  /**
+   * Remise a zero des indicateurs
+   */
   razBool() {
     this.chargement = false;
     this.creationOk = false;

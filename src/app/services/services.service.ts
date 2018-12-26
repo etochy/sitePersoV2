@@ -7,6 +7,8 @@ import { environment } from 'src/environments/environment';
 import { Ressource } from '../blog/classes/ressource';
 import { Article } from '../blog/classes/article';
 import { componentFactoryName } from '@angular/compiler';
+import { Message } from '../blog/classes/message';
+import { URLSearchParams } from 'url';
 
 
 @Injectable({
@@ -27,6 +29,9 @@ export class ServicesService {
     this.init();
   }
 
+  /**
+   * Recupere les ressources et notifie les composants abonnés
+   */
   init() {
     this.getRessources().subscribe((data: Ressource[]) => {
       data.forEach(element => {
@@ -40,14 +45,29 @@ export class ServicesService {
         }
         if (element.akRessource === 'imageAccueil') {
           this.imageAccueil = element.ressource;
-        }
+        }        
       });      
       this.components.forEach(e => {
         e.notif();
       });
+      
     });
   }
+
+  getUneRessource(st: string): string {
+    let res = '';
+    this.ressources.forEach(element => {     
+      if (element.akRessource === st) {
+        res = element.ressource;
+      }
+    });
+    return res;
+  }
   
+  /**
+   * Creation dde ressource
+   * @param post 
+   */
   creerRessource(post: Ressource){
     return this.http.post(this.url + '/ressources', post)
     .pipe(
@@ -55,6 +75,10 @@ export class ServicesService {
       catchError(this.handleError) // then handle the error
     );
   }
+  /**
+   * Modification de ressource
+   * @param post 
+   */
   updateRessource(post: Ressource){
     return this.http.put(this.url + '/ressources/' + post.akRessource , post)
     .pipe(
@@ -62,6 +86,9 @@ export class ServicesService {
       catchError(this.handleError) // then handle the error
     );
   }
+  /**
+   * Recupere toutes les ressources
+   */
   getRessources(){
     return this.http.get(this.url + '/ressources')
     .pipe(
@@ -70,14 +97,15 @@ export class ServicesService {
     );
   }
 
-  getPosts(skip: number, limit: number) {
+  /**
+   * Récupere un nombre de Posts
+   * @param skip nombre a ne pas recuperer
+   * @param limit nombre a récuperer
+   */
+  getPosts(skip: number, limit: number) {    
 
-    let params = new HttpParams();
-    params.set('skip', skip.toString());
-    params.set('limit', limit.toString());
-
-    const options = {params};
-
+    // Add safe, URL encoded search parameter if there is a search term
+    const options = { params: new HttpParams().set('limit', limit.toString()).set('skip', skip.toString()) };
     return this.http.get(this.url + '/articles', options)
     .pipe(
       retry(3), // retry a failed request up to 3 times
@@ -85,6 +113,10 @@ export class ServicesService {
     );
   }
 
+  /**
+   * Récupere un post precis
+   * @param id 
+   */
   getPostUnique(id: number){
     return this.http.get(this.url + '/articles/' + id)
     .pipe(
@@ -93,6 +125,10 @@ export class ServicesService {
     );
   }
 
+  /**
+   * Creation de post pour fil actualite
+   * @param post 
+   */
   creerPost(post: Actualite){
     return this.http.post(this.url + '/articles', post)
     .pipe(
@@ -101,6 +137,10 @@ export class ServicesService {
     );
   }
 
+  /**
+   * Creation d'article du blog
+   * @param post 
+   */
   creerArticle(post: Article){
     return this.http.post(this.url + '/blog', post)
     .pipe(
@@ -109,6 +149,10 @@ export class ServicesService {
     );
   }
 
+  /**
+   * Mise a jour de la position 
+   * @param user 
+   */
   majPosition(user: any){
     return this.http.put(this.url + "/utilisateurs/update-position/" + user.idUtil, user)
     .pipe(
@@ -117,6 +161,31 @@ export class ServicesService {
     );
   }
 
+  getUser(user: string){
+    return this.http.get(this.url + "/utilisateurs/" + user)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  /**
+   * Envoi message via formulaire contact
+   * @param message 
+   */
+  envoyerMessage(message: Message) {
+    return this.http.post(this.url + "/contacter", message)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  /**
+   * Service de connexion
+   * @param username 
+   * @param password 
+   */
   login(username: string, password: string){
     const body = {
       username: username,
@@ -130,6 +199,10 @@ export class ServicesService {
     );
   }
 
+  /**
+   * Gere les types d'erreurs
+   * @param error 
+   */
   private handleError(error: HttpErrorResponse) {    
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -145,8 +218,12 @@ export class ServicesService {
     return throwError(error);
   };
 
-  
+  /**
+   * Permet à un composant de s'abonner au service pour etre notifié lorsque les ressources sont récupérées
+   * @param comp 
+   */
   abonnement(comp) {
     this.components.push(comp);
+    comp.notif();
   }
 }

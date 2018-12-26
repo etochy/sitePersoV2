@@ -22,6 +22,9 @@ export class CreationPostComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Creation d'un post d'actualité lors du clic
+   */
   onSubmitActu() {
     if (this.actuCreation.title_eng === undefined || this.actuCreation.title_eng === '') {
       this.actuCreation.title_eng = this.actuCreation.title;
@@ -48,6 +51,10 @@ export class CreationPostComponent implements OnInit {
       }
     );
   }
+
+  /**
+   * Remise a zero des indicateurs
+   */
   razBool() {
     this.chargement = false;
     this.creationOk = false;

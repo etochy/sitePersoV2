@@ -1,7 +1,23 @@
-<p>
-  page-accueil-blog works!
-</p>
-<app-bouton name='creation' link='creation'></app-bouton>
-<app-bouton name="Fils actualité" link='actualite'></app-bouton>
-<app-bouton name="Mes articles" link='articles'></app-bouton>
+<div class='blog'>
+    <!-- <app-bouton name="Fils actualité" link='actualite'></app-bouton> -->
+    <div class="partieG">
+      
+      <img src="./../../../assets/testPro.jpg" alt="">
+      <div class="position">
+        <b>Dernière position :</b>
+        <br>
+        <span>{{user.pays}}</span>
+        <span> {{user.ville}}</span>       
+      </div>
+
+      <div id="map"></div>
+
+      <app-bouton name="Mes articles" link='articles' class="articles"></app-bouton>
+    </div>
+    <div class="actualite">
+      <app-actualite></app-actualite>
+    </div>
+
+</div>
+
 

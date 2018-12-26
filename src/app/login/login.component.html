@@ -1,12 +1,18 @@
-<div (click)="deployerLogin()" class="boutonLogin">
-  <ng-container *ngIf="!valid; else elseTemplate">
-    LOGIN
-  </ng-container>
-  <ng-template #elseTemplate>
-    DECONNEXION
-  </ng-template>
-  
+<div style="display: flex; flex-flow:row;">
+
+  <app-bouton *ngIf="valid" name='CREATION' link='creation' class="creation"></app-bouton>
+
+  <div (click)="deployerLogin()" class="boutonLogin">
+    <ng-container *ngIf="!valid; else elseTemplate">
+      LOGIN
+    </ng-container>
+    <ng-template #elseTemplate>
+      DECONNEXION
+    </ng-template>  
+  </div>
+
 </div>
+
 
 <form class="formLogin" [ngClass]="{'active': deployer, 'error': error}" (ngSubmit)="login()" #resForm="ngForm">
   <div class="">

@@ -1,0 +1,53 @@
+$boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+$back: linear-gradient(to bottom right, #ffffff, #dadada);
+
+#map{
+    width: 100%;
+    height: 16rem;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.actualite {
+    padding: 10px;
+    width: 40rem;
+    @media (max-width: 900px) {
+        width: 90%;
+    }
+}
+.blog {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.partieG{
+    display: flex;
+    position: sticky;
+    flex-flow: column;
+    top: calc(4rem + 10px);
+    width: 13rem;
+    height: 40rem;
+    overflow: hidden;
+    box-shadow: $boxShadow;
+    margin: 10px;
+    padding: 20px;
+    background: $back; 
+    
+    @media (max-width: 900px) {
+        // display: flex;
+        position: relative;
+        height: auto;
+        width: 90%;
+        top: 0;
+
+    }
+    
+    & img {
+        align-self: center;
+        width: 100%;
+        border-radius: 50%;
+        @media(max-width: 900px) {
+            width: 10rem;
+        }
+    }
+}
+

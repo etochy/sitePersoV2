@@ -21,6 +21,10 @@ export class CreationArticleComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  /**
+   * Creation de l'article lors du clique sur submit
+   */
   onSubmitActu() {
     if (this.actuCreation.title_eng === undefined || this.actuCreation.title_eng === '') {
       this.actuCreation.title_eng = this.actuCreation.title;
@@ -51,6 +55,10 @@ export class CreationArticleComponent implements OnInit {
       }
     );
   }
+
+  /**
+   * Remise a zero des indicateurs
+   */
   razBool() {
     this.chargement = false;
     this.creationOk = false;

@@ -1,3 +1,109 @@
-<p>
-  page-accueil-pro works!
-</p>
+<!-- <div class="navigation">
+  <a routerLink="/pro" fragment="1" class="btn_nav" [replaceUrl]='false'></a>
+  <a routerLink="/pro" fragment="2" class="btn_nav"></a> -->
+  <!-- <a href="#3" class="btn_nav"></a> -->
+  <!-- <a routerLink="/pro" fragment="4" class="btn_nav"></a>
+</div> -->
+
+<div id="1" class="gauche volet" [ngStyle]="{'min-height': trustedStyle, 'height': trustedStyle}">
+  <img src="{{img1}}" alt="">
+  <div class="content">
+    <h2>Developpeur Full-Stack à votre service</h2>
+    <ul>
+        <li>Creation de sites web</li>
+        <li>Amelioration ou creation de fonctionnalitées</li>
+        <li>Incorporation dans équipe de devellopement existante</li>
+    </ul>
+  </div>
+</div>
+
+<div id="2" class="droit volet" [ngStyle]="{'min-height': trustedStyle, 'height': trustedStyle}">
+  <img src="{{img2}}" alt="">
+  <div class="content">
+    <h2>Compétences larges</h2>
+    <ul>
+        <li>Front-end : Javascript, Angular 4+, VueJs</li>
+        <li>Back-end : Java, J2EE, NodeJs, C++</li>
+        <li>BDD: SQL, MongoDB, Neo4J</li>
+    </ul>
+  </div>
+</div>
+<!-- 
+<div id="3" class="experience gauche volet">
+  <img src="" alt="">
+  <div class="content">
+    <p>Expériences</p>
+    <ul>
+        <li>Front-end : Javascript, Angular 4+, VueJs</li>
+        <li>Back-end : Java, J2EE, NodeJs, C++</li>
+        <li>BDD: SQL, MongoDB, Neo4J</li>
+    </ul>
+  </div>
+</div> -->
+<div id="3" class="gauche volet" [ngStyle]="{'min-height': trustedStyle, 'height': trustedStyle}">
+  <img src="{{img3}}" alt="">
+  <div class="content">
+    <h2>Plus sur moi</h2>
+    <span>
+      J'adore voyager et je vis depuis plusieurs mois en Asie. Cela me permet une plus grande liberté dans ma vie ainsi que dans mon travail.
+      Pas de panique cependant, je suis facilement joignable et disponible. Je serais ravi de discuter avec vous des possibilités ainsi que des modaliltés à
+      mettre en place pour une éventuelle collaboration. 
+    </span>
+  </div>
+</div>
+
+<div id="4" class="contact volet" [ngStyle]="{'height': trustedStyle}">
+  <div class="formContact">
+    <h2>Me contacter</h2>
+    <form class="" (ngSubmit)="onSubmitMessage()" #resForm="ngForm">
+      <div class="input_creation_g">
+        <label class="input_nom" for="email">Email</label>
+        <br>
+        <input class="input_creation" type="email" id="email" [(ngModel)]="email" name="email" required>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="sujet">Sujet</label>
+        <br>
+        <input class="input_creation" type="text" id="sujet" [(ngModel)]="sujet" name="sujet" required>
+      </div>
+      <div class="input_creation_g">
+        <label class="input_nom" for="message">Message</label>
+        <br>
+        <textarea class="input_creation" type="text" id="message" [(ngModel)]="message" name="message" required></textarea>
+      </div>
+      <div class="submit">
+        <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Envoyer</button>
+        <div class="chargement" [hidden]="!chargement"></div>
+      </div>
+    </form>
+
+    <div class="envoi_ok" [hidden]="!creationOk">
+      <span> Message envoyé</span> 
+    </div>
+    <div class="envoi_fail" [hidden]="!creationProbleme">
+      <span>Un probleme est survenue : {{error}}</span>
+    </div>
+
+  </div>
+  
+  <div class="contact">
+      <span class="">Vous pouvez aussi me contacter via ces plateformes</span>
+      <div class="content">
+        <a class="lien" href="https://github.com/etochy" target="_blank">
+          <div class="iconGit"></div>
+          <span>Github</span>
+        </a>
+        <a class="lien" href="http://www.linkedin.com/in/esteban-launay-8b2060a5" target="_blank">
+          <div class="iconLinkedin"></div>
+          <span>Linkedin</span>
+        </a>
+        <a class="lien" href="https://www.malt.fr/profile/estebanlaunay" target="_blank">
+          <div class="iconMalt"></div>
+          <span>Malt</span>
+        </a>
+        <br>
+        <span>Si vous préfèrez m'envoyer un mail directement :</span>
+        <br>
+        <a href="mailto:esteban.launay.pro@gmail.com">esteban.launay.pro@gmail.com</a>
+  </div>
+</div>

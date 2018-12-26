@@ -20,11 +20,15 @@ export class LoginComponent implements OnInit {
     private service: ServicesService,
   ) {}
 
+  /**
+   * Authentifie l'utilisateur
+   */
   login(){
     this.razIndic();
     this.chargement = true;
     this.service.login(this._username, this._password).subscribe((data: UserLogin) =>{
       this.chargement = false;
+      // Enregistre les informations dans le sessionStorage
       sessionStorage.setItem('authorization', data.token);
       sessionStorage.setItem('user', data.user.username);
       sessionStorage.setItem('expire', data.expires.toString());
@@ -32,8 +36,7 @@ export class LoginComponent implements OnInit {
       this.deployer = false;
     },
     error => {
-      console.log('error');
-      
+      // Notifie l'utilisateur d'une erreur      
       this.error = true;
       this.chargement = false;
     }); 
@@ -42,11 +45,17 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   
+  /**
+   * Remise a zero des indicateurs
+   */
   razIndic(){
     this.chargement = false;
     this.error = false;
   }
 
+  /**
+   * Permet d'afficher le formulaire de login
+   */
   deployerLogin() {
     if (!this.valid) {
       this.deployer = !this.deployer;

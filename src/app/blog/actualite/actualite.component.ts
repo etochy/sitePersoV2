@@ -10,30 +10,29 @@ import { Actualite } from '../classes/actualite';
 export class ActualiteComponent implements OnInit {
   
   private _filActu: Actualite[] = [];
+  skip: number = 0;
+  limit: number = 5;
 
   constructor(
     private service: ServicesService,
   ) { }
 
   ngOnInit() {
-    this.chargerFil(0,5);
+    this.chargerFil(this.skip,this.limit);
   }
 
   chargerFil(skip: number, limit: number) {
     this.service.getPosts(skip, limit).subscribe((data: Actualite[]) => {
+      let n = 0;
       data.forEach(element => {
+        n++;
         this._filActu.push(element);
-      });      
+      });   
+      this.skip += n;   
     });
   }
 
-  creerArticle() {
-    let actu: Actualite = new Actualite();
-    actu.akArticle = 'akArt2';
-    actu.description = 'coucou';
-    actu.title = 'yeah test';
-    this.service.creerPost(actu).subscribe((data) => {
-    })
+  chargerPlus() {
+    this.chargerFil(this.skip, this.limit);
   }
-
 }

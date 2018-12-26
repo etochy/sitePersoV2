@@ -2,7 +2,6 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 $back: linear-gradient(to bottom right, #ffffff, #dadada);
 .actu {
     width: 100%;
-    background-color: white;
     overflow: hidden;
     box-shadow: $boxShadow;
     margin: 10px;
@@ -11,20 +10,8 @@ $back: linear-gradient(to bottom right, #ffffff, #dadada);
     & img {
         width: 100%;
     }
-}
 
-.actu_btn {
-    width: 10rem;
-    margin: 0 auto;
-    // border: 1px solid gray;
-    box-shadow: $boxShadow;
-    padding: 10px;
-    border-radius: 3rem;
-    text-align: center;
-    
-    background: $back;
-    &:hover {
-        cursor: pointer;
-        border-bottom: 3px solid gray;
+    @media (max-width: 900px) {
+        width: auto;
     }
 }
