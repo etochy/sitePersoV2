@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from 'src/app/services/services.service';
 import { User } from '../classes/user';
 import { environment } from 'src/environments/environment';
+import { Ressource } from '../classes/ressource';
 
 declare var ol: any;
 
@@ -23,6 +24,7 @@ export class PageAccueilBlogComponent implements OnInit {
   
   iconsLayers: any[] = [];
   
+  imageHead: Ressource = new Ressource();
   
   constructor(
     private service: ServicesService,
@@ -43,6 +45,8 @@ export class PageAccueilBlogComponent implements OnInit {
       });
 
       this.chargerPos();
+
+      this.service.abonnement(this);
     }
     
     /**
@@ -92,5 +96,8 @@ export class PageAccueilBlogComponent implements OnInit {
       });
     }
     
+    notif(){
+      this.imageHead = this.service.getUneRessource("imageHead");
+    }
     
   }

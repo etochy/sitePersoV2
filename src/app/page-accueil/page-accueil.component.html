@@ -1,6 +1,13 @@
 <div class='contenu'>
   <div class="image">
-      <img src="{{imgAccueil}}" alt="">
+      <!-- <img src="{{imgAccueil}}" alt=""> -->
+    <ng-container *ngIf="imgAccueil.image64 !== '' && imgAccueil.image64 !== undefined; else elseTemplate">
+        <img [src]="'data:image/jpg;base64,'+imgAccueil.image64" alt="" >
+    </ng-container>
+    <ng-template #elseTemplate>
+        <img src="{{imgAccueil.ressource}}" alt="">
+    </ng-template>
+
   </div>
   <div>
     Bienvenue sur launay-esteban.fr

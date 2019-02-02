@@ -2,7 +2,15 @@
     <!-- <app-bouton name="Fils actualité" link='actualite'></app-bouton> -->
     <div class="partieG">
       
-      <img src="./../../../assets/testPro.jpg" alt="">
+      <!-- <img [src]='imageHead.ressource' alt=""> -->
+
+      <ng-container *ngIf="imageHead.image64 !== '' && imageHead.image64 !== undefined; else elseTemplate">
+          <img [src]="'data:image/jpg;base64,'+imageHead.image64" alt="" >
+      </ng-container>
+      <ng-template #elseTemplate>
+          <img src="{{imageHead.ressource}}" alt="">
+      </ng-template>
+
       <div class="position">
         <b>Dernière position :</b>
         <br>

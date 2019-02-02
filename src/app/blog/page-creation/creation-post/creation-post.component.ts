@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ServicesService } from 'src/app/services/services.service';
 import { Actualite } from '../../classes/actualite';
 
@@ -8,12 +8,15 @@ import { Actualite } from '../../classes/actualite';
   styleUrls: ['./creation-post.component.scss']
 })
 export class CreationPostComponent implements OnInit {
-
+  @ViewChild('fileInput') fileInput;
+  
   actuCreation: Actualite = new Actualite();
   chargement: boolean = false;
   creationOk: boolean = false;
   creationProbleme: boolean = false;
   error: string = '';
+  base64textString: string = '';
+  upok: boolean = false;
 
   constructor(
     private service: ServicesService,
@@ -37,17 +40,22 @@ export class CreationPostComponent implements OnInit {
     
     this.razBool();
     this.chargement = true;
+    this.actuCreation.image64 = this.base64textString;
     this.service.creerPost(this.actuCreation).subscribe(
       (data: any) => {
         this.chargement = false;
         this.actuCreation = new Actualite();
         this.creationOk = true;
+        this.base64textString = '';
+        this.upok = false;
       },
       error => {
         this.chargement = false;
         this.creationProbleme = true;
         console.log(error.error);
         this.error = error.error;
+        this.base64textString = '';
+        this.upok = false;
       }
     );
   }
@@ -60,5 +68,21 @@ export class CreationPostComponent implements OnInit {
     this.creationOk = false;
     this.creationProbleme = false;
   }
+
+  upload() {
+    
+    let fileBrowser = this.fileInput.nativeElement;
+    if (fileBrowser.files && fileBrowser.files[0]) {
+      let file = fileBrowser.files[0];      
+      let reader = new FileReader();
+      reader.onload =this._handleReaderLoaded.bind(this);
+      reader.readAsBinaryString(file);
+    }
+  }
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+    this.upok = true;
+   }
 
 }

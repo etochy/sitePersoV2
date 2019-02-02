@@ -26,7 +26,7 @@ export class ActualiteComponent implements OnInit {
       let n = 0;
       data.forEach(element => {
         n++;
-        this._filActu.push(element);
+        this._filActu.push(element);        
       });   
       this.skip += n;   
     });

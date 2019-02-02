@@ -24,8 +24,14 @@
       </div>
       <div class="input_creation_g">
         <label class="input_nom" for="image">Image: </label>
-        <input class="input_creation" type="text" id="image" [(ngModel)]="actuCreation.image" name="image"required>
+        <input class="input_creation" type="text" id="image" [(ngModel)]="actuCreation.image" name="image">
       </div>
+
+      <div class="input_upload" [ngClass]="{'active': upok, 'error': error}">
+        <input type="file" #fileInput placeholder="Upload file..." />
+        <button type="button" (click)="upload()">Upload</button>
+      </div>
+
       <div class="submit">
         <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Submit</button>
         <div class="chargement" [hidden]="!chargement"></div>

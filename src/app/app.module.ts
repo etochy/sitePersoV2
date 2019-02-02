@@ -25,6 +25,7 @@ import { ServicesService } from './services/services.service';
 import { CartePostComponent } from './components/carte-post/carte-post.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UnderConstructComponent } from './under-construct/under-construct.component';
+import { PageMessagesComponent } from './page-messages/page-messages.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { UnderConstructComponent } from './under-construct/under-construct.compo
     CreationPositionComponent,
     CartePostComponent,
     NotFoundComponent,
-    UnderConstructComponent
+    UnderConstructComponent,
+    PageMessagesComponent
     
   ],
   imports: [

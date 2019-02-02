@@ -1,0 +1,9 @@
+<div *ngFor="let element of messages" class="div_formulaire_creation">
+  
+  <h4>{{element.sujet}}</h4>
+  <span class="date">{{element.date| date: 'dd/MM/yyyy'}}  </span>
+  <!-- <br> -->
+  <span>{{element.email}}</span>
+  <br>
+  <p>{{element.message}}</p>
+</div>

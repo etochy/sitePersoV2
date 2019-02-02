@@ -1,7 +1,41 @@
 <div class="actu">
   <h2>{{post.title}}</h2>
-  <!-- <img src="./../../../assets/testPro.jpg" alt="{{post.description}}"> -->
-  <img src='{{post.image}}' alt="{{post.description}}">
+
+  <ng-container *ngIf="post.image64 !== '' && post.image64 !== undefined; else elseTemplate">
+    <img [src]="'data:image/jpg;base64,'+post.image64" alt="{{post.description}}">
+  </ng-container>
+  <ng-template #elseTemplate>
+    <img src='{{post.image}}' alt="{{post.description}}">
+  </ng-template>
+
   <p>{{post.date | date: 'dd/MM/yyyy'}}</p>  
   <p>{{post.description}}</p>
+  
+  <div class="border"></div>
+  <div *ngFor="let item of comments" class="comment">
+    <b>{{item.name}} </b>
+    <span>{{item.comment}}</span>
+  </div>
+  <span (click)="chargerPlus()" class="charger">Charger plus</span>
+
+  <form class="form" (ngSubmit)="creerCommentaire()" #resForm="ngForm">
+    <div class="input_name">
+      <input class="comment" type="text" id="title" [(ngModel)]="commentCrea.name" name="name" placeholder="Pseudo" required>
+    </div>
+    <div class="input_comment">
+      <input class="comment" type="text" id="comment" [(ngModel)]="commentCrea.comment" name="comment" placeholder="Commentaire" required>
+    </div>
+    <div class="submit">
+      <button class="bouton_submit" type="submit" [disabled]="!resForm.form.valid">Ok</button>
+      <!-- <div class="chargement" [hidden]="!chargement"></div> -->
+    </div>
+  </form>
+
+  <!-- <button (click)="creerCommentaire()">Commenter</button> -->
+
+  <div class="border"></div> 
+  <div class="formulaire commentaire">
+
+  </div>
+
 </div>

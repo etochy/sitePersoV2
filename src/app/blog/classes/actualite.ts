@@ -5,6 +5,7 @@ export class Actualite {
     title: string = null;
     description: string = null;
     image: string = null;
+    image64: string = '';
     title_eng: string;
     description_eng: string;
 }

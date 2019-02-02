@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServicesService } from 'src/app/services/services.service';
 import { Message } from 'src/app/blog/classes/message';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Ressource } from 'src/app/blog/classes/ressource';
 
 @Component({
   selector: 'app-page-accueil-pro',
@@ -24,9 +25,9 @@ export class PageAccueilProComponent implements OnInit {
   creationProbleme: boolean = false;
   error: boolean = false;
 
-  img1: string;
-  img2: string;
-  img3: string;
+  img1: Ressource;
+  img2: Ressource;
+  img3: Ressource;
 
   constructor(
     private service: ServicesService,
@@ -51,13 +52,12 @@ export class PageAccueilProComponent implements OnInit {
     }
   }
   ngDoCheck() {
-    console.log('test');
     this.resize();
   }
 
   notif(){
     this.img1 = this.service.getUneRessource("imgPro1");
-    this.img2 = this.service.getUneRessource("imgPro2");
+    this.img2 = this.service.getUneRessource("imgPro2");    
     this.img3 = this.service.getUneRessource("imgPro3");
   }
 

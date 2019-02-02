@@ -6,7 +6,13 @@
 </div> -->
 
 <div id="1" class="gauche volet" [ngStyle]="{'min-height': trustedStyle, 'height': trustedStyle}">
-  <img src="{{img1}}" alt="">
+  <ng-container *ngIf="img1.image64 !== '' && img1.image64 !== undefined; else elseTemplate">
+      <img [src]="'data:image/jpg;base64,'+img1.image64" alt="" >
+  </ng-container>
+  <ng-template #elseTemplate>
+      <img src="{{img1.ressource}}" alt="">
+  </ng-template>
+  
   <div class="content">
     <h2>Developpeur Full-Stack à votre service</h2>
     <ul>
@@ -18,7 +24,13 @@
 </div>
 
 <div id="2" class="droit volet" [ngStyle]="{'min-height': trustedStyle, 'height': trustedStyle}">
-  <img src="{{img2}}" alt="">
+  <ng-container *ngIf="img2.image64 !== '' && img2.image64 !== undefined; else elseTemplate">
+      <img [src]="'data:image/jpg;base64,'+img2.image64" alt="" >
+  </ng-container>
+  <ng-template #elseTemplate>
+      <img [src]="img2.ressource" alt="">
+  </ng-template>
+
   <div class="content">
     <h2>Compétences larges</h2>
     <ul>
@@ -41,7 +53,12 @@
   </div>
 </div> -->
 <div id="3" class="gauche volet" [ngStyle]="{'min-height': trustedStyle, 'height': trustedStyle}">
-  <img src="{{img3}}" alt="">
+  <ng-container *ngIf="img3.image64 !== '' && img3.image64 !== undefined; else elseTemplate">
+      <img [src]="'data:image/jpg;base64,'+img3.image64" alt="" >
+  </ng-container>
+  <ng-template #elseTemplate>
+      <img [src]="img3.ressource" alt="">
+  </ng-template>
   <div class="content">
     <h2>Plus sur moi</h2>
     <span>

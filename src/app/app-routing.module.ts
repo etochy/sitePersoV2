@@ -9,6 +9,7 @@ import { PageArticleDetailComponent } from './blog/articles/page-article-detail/
 import { PageCreationComponent } from './blog/page-creation/page-creation.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UnderConstructComponent } from './under-construct/under-construct.component';
+import { PageMessagesComponent } from './page-messages/page-messages.component';
 
 const routes: Routes = [
   { path: '', component: PageAccueilComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'blog/articles/:id', component: UnderConstructComponent },
   { path: 'creation', component: PageCreationComponent },
   { path: 'pro', component: PageAccueilProComponent },
+  { path: 'messages', component: PageMessagesComponent },
   { path: '**', component: NotFoundComponent },
 
     

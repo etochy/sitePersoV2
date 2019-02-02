@@ -85,6 +85,9 @@ $boxShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             border-radius: 5px;
             padding-left: 5px;
             padding-right: 5px;
+
+            transition: border .2s linear;
+            -webkit-transition: border .2s linear;
         }
         & .input_creation.ng-invalid {
             border-right: 10px solid rgb(196, 13, 13);

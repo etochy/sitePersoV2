@@ -9,6 +9,7 @@ import { Article } from '../blog/classes/article';
 import { componentFactoryName } from '@angular/compiler';
 import { Message } from '../blog/classes/message';
 import { URLSearchParams } from 'url';
+import { Commentaire } from '../blog/classes/commentaire';
 
 
 @Injectable({
@@ -18,8 +19,8 @@ export class ServicesService {
 
   private url = environment.urlServer;
   ressources: Ressource[] = [];
-  public imageHeader: string = '';
-  public imageAccueil: string = '';
+  public imageHeader: Ressource = new Ressource();
+  public imageAccueil: Ressource = new Ressource();
 
   components: any[] = [];
 
@@ -41,10 +42,10 @@ export class ServicesService {
       //VAR
       this.ressources.forEach(element => {
         if (element.akRessource === 'imageHeader') {
-          this.imageHeader = element.ressource;
+          this.imageHeader = element;
         }
         if (element.akRessource === 'imageAccueil') {
-          this.imageAccueil = element.ressource;
+          this.imageAccueil = element;
         }        
       });      
       this.components.forEach(e => {
@@ -54,11 +55,11 @@ export class ServicesService {
     });
   }
 
-  getUneRessource(st: string): string {
-    let res = '';
+  getUneRessource(st: string): Ressource {
+    let res = new Ressource();
     this.ressources.forEach(element => {     
       if (element.akRessource === st) {
-        res = element.ressource;
+        res = element;
       }
     });
     return res;
@@ -125,6 +126,24 @@ export class ServicesService {
     );
   }
 
+  getCommentaires(id: string, skip: number, limit: number){
+    // Add safe, URL encoded search parameter if there is a search term
+    const options = { params: new HttpParams().set('limit', limit.toString()).set('skip', skip.toString()).set('id', id.toString()) };
+    return this.http.get(this.url + '/commentaires', options)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  creerCommentaire(comment: Commentaire) {
+    return this.http.post(this.url + '/commentaires', comment)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
   /**
    * Creation de post pour fil actualite
    * @param post 
@@ -175,6 +194,18 @@ export class ServicesService {
    */
   envoyerMessage(message: Message) {
     return this.http.post(this.url + "/contacter", message)
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError) // then handle the error
+    );
+  }
+
+  /**
+   * Envoi message via formulaire contact
+   * @param message 
+   */
+  getMessages() {
+    return this.http.get(this.url + "/messages")
     .pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError) // then handle the error
