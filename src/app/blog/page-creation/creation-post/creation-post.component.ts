@@ -29,14 +29,14 @@ export class CreationPostComponent implements OnInit {
    * Creation d'un post d'actualité lors du clic
    */
   onSubmitActu() {
-    if (this.actuCreation.title_eng === undefined || this.actuCreation.title_eng === '') {
-      this.actuCreation.title_eng = this.actuCreation.title;
+    if (this.actuCreation.nom_eng === undefined || this.actuCreation.nom_eng === '') {
+      this.actuCreation.nom_eng = this.actuCreation.nom;
     }
     if (this.actuCreation.description_eng === undefined || this.actuCreation.description_eng === '') {
       this.actuCreation.description_eng = this.actuCreation.description;
     }
 
-    this.actuCreation.akArticle = this.actuCreation.title.trim().toLowerCase() + this.actuCreation.date.toString();
+    this.actuCreation.akArticle = this.actuCreation.nom.trim().toLowerCase() + this.actuCreation.date.toString();
     
     this.razBool();
     this.chargement = true;

@@ -1,5 +1,5 @@
 <div class="actu">
-  <h2>{{post.title}}</h2>
+  <h2>{{post.nom}}</h2>
 
   <ng-container *ngIf="post.image64 !== '' && post.image64 !== undefined; else elseTemplate">
     <img [src]="'data:image/jpg;base64,'+post.image64" alt="{{post.description}}">

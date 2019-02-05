@@ -9,7 +9,7 @@ import { Actualite } from '../classes/actualite';
 })
 export class ActualiteComponent implements OnInit {
   
-  private _filActu: Actualite[] = [];
+  _filActu: Actualite[] = [];
   skip: number = 0;
   limit: number = 5;
 
